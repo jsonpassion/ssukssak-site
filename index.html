@@ -196,10 +196,20 @@
   .cta p { color: var(--sub); margin-top: 10px; }
 
   footer {
-    border-top: 1px solid var(--line); padding: 36px 0 56px; text-align: center;
+    border-top: 1px solid var(--line); padding: 32px 0 48px;
     font-size: 13px; color: var(--sub);
   }
-  footer a { color: var(--teal); text-decoration: none; font-weight: 600; margin: 0 10px; }
+  .f-inner { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .f-brand { font-weight: 900; color: var(--ink); font-size: 14px; }
+  footer a { color: var(--teal); text-decoration: none; font-weight: 600; }
+  .contact-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--ink); color: #fff !important; font-weight: 700;
+    padding: 9px 18px; border-radius: 999px; font-size: 13px;
+  }
+  .f-copy { margin-left: auto; }
+  .f-biz { flex-basis: 100%; font-size: 12px; color: var(--sub); }
+  @media (max-width: 560px) { .f-copy { margin-left: 0; } }
 </style>
 </head>
 <body>
@@ -415,9 +425,13 @@
 </section>
 
 <footer>
-  <div class="wrap">
-    <a href="privacy/">개인정보 처리방침</a>·<a href="terms/">이용약관</a>
-    <p style="margin-top:14px">© 2026 ForgeLab · Jason Lee</p>
+  <div class="wrap f-inner">
+    <span class="f-brand">쓱싹</span>
+    <a href="privacy/">개인정보 처리방침</a>
+    <a href="terms/">이용약관</a>
+    <a class="contact-btn" href="mailto:forgelab.aitech@gmail.com?subject=%5B%EC%93%B1%EC%8B%B9%5D%20%EB%AC%B8%EC%9D%98">✉️ 문의하기</a>
+    <span class="f-copy">© 2026 ForgeLab</span>
+    <span class="f-biz">ForgeLab · 대표 Jason Lee</span>
   </div>
 </footer>
 
