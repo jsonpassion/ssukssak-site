@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>쓱싹 — 쓱 넘기고, 싹 비우는 사진 정리</title>
+<meta name="description" content="겹친 사진과 큰 파일을 찾아 한 번에 정리하는 가장 산뜻한 iOS 사진 정리 앱. 함부로 지우지 않는 3중 안전, 구독 함정 없는 정직한 가격.">
+<meta property="og:title" content="쓱싹 — 사진 정리">
+<meta property="og:description" content="쓱 넘기고, 싹 비워요. 겹친 사진과 큰 파일을 찾아주는 가장 산뜻한 방법.">
+<meta property="og:image" content="https://jsonpassion.github.io/ssukssak-site/icon.png">
+<link rel="icon" type="image/png" href="icon.png">
+<style>
+  :root {
+    --mint: #2BD9A2;
+    --teal: #0E8F7E;
+    --deep: #06555E;
+    --ink: #10221F;
+    --sub: #5A6E6A;
+    --bg: #FAFDFC;
+    --card: #FFFFFF;
+    --line: #E3EEEB;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", sans-serif;
+    background: var(--bg); color: var(--ink); line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+  /* Hero */
+  .hero {
+    padding: 88px 0 72px;
+    text-align: center;
+    background: linear-gradient(160deg, #E9FBF4 0%, var(--bg) 70%);
+  }
+  .hero img.icon {
+    width: 128px; height: 128px; border-radius: 29px;
+    box-shadow: 0 12px 40px rgba(6, 85, 94, .18);
+  }
+  .hero h1 { font-size: 44px; font-weight: 900; margin-top: 28px; letter-spacing: -0.5px; }
+  .hero p.tag { font-size: 22px; font-weight: 700; color: var(--teal); margin-top: 8px; }
+  .hero p.sub { font-size: 16px; color: var(--sub); margin-top: 14px; }
+  .store {
+    display: inline-block; margin-top: 32px; padding: 14px 28px;
+    background: var(--ink); color: #fff; border-radius: 999px;
+    font-weight: 700; font-size: 15px; text-decoration: none;
+  }
+  .store span { opacity: .55; font-weight: 500; }
+
+  /* Sections */
+  section { padding: 64px 0; }
+  section h2 { font-size: 26px; font-weight: 900; text-align: center; letter-spacing: -0.3px; }
+  section p.lead { text-align: center; color: var(--sub); margin-top: 8px; font-size: 15px; }
+
+  .features { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 36px; }
+  @media (max-width: 560px) { .features { grid-template-columns: 1fr; } }
+  .feature {
+    background: var(--card); border: 1px solid var(--line); border-radius: 20px;
+    padding: 24px;
+  }
+  .feature .glyph { font-size: 26px; }
+  .feature h3 { font-size: 17px; font-weight: 800; margin-top: 10px; }
+  .feature p { font-size: 14px; color: var(--sub); margin-top: 4px; }
+  .feature .free {
+    display: inline-block; margin-top: 10px; font-size: 12px; font-weight: 800;
+    color: var(--teal);
+  }
+
+  /* Safety */
+  .safety { background: linear-gradient(180deg, #F0FBF7, var(--bg)); }
+  .steps { max-width: 520px; margin: 32px auto 0; }
+  .step { display: flex; gap: 14px; align-items: flex-start; padding: 14px 0; }
+  .step .n {
+    flex: none; width: 28px; height: 28px; border-radius: 50%;
+    background: var(--teal); color: #fff; font-weight: 800; font-size: 14px;
+    display: flex; align-items: center; justify-content: center; margin-top: 2px;
+  }
+  .step b { display: block; font-size: 15px; }
+  .step span { font-size: 14px; color: var(--sub); }
+
+  /* Pricing */
+  .plans { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 36px; }
+  @media (max-width: 560px) { .plans { grid-template-columns: 1fr; } }
+  .plan {
+    background: var(--card); border: 1.5px solid var(--line); border-radius: 22px;
+    padding: 28px 24px; text-align: center;
+  }
+  .plan.hot { border-color: var(--mint); }
+  .plan .name { font-weight: 800; font-size: 15px; color: var(--sub); }
+  .plan .price { font-size: 32px; font-weight: 900; margin-top: 6px; letter-spacing: -0.5px; }
+  .plan .per { font-size: 13px; color: var(--sub); }
+  .plan .note { margin-top: 12px; font-size: 13px; color: var(--teal); font-weight: 700; }
+  .honest { text-align: center; margin-top: 22px; font-size: 14px; color: var(--sub); }
+
+  footer {
+    border-top: 1px solid var(--line); padding: 36px 0 56px; text-align: center;
+    font-size: 13px; color: var(--sub);
+  }
+  footer a { color: var(--teal); text-decoration: none; font-weight: 600; margin: 0 10px; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <img class="icon" src="icon.png" alt="쓱싹 앱 아이콘">
+    <h1>쓱싹</h1>
+    <p class="tag">쓱 넘기고, 싹 비워요</p>
+    <p class="sub">겹친 사진과 큰 파일을 찾아 한 번에 정리하는<br>가장 산뜻한 iOS 사진 정리 앱</p>
+    <a class="store" href="#">App Store <span>· 출시 준비 중</span></a>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>이런 것들을 쓸어드려요</h2>
+    <div class="features">
+      <div class="feature">
+        <div class="glyph">👆</div>
+        <h3>쓸기</h3>
+        <p>한 장씩 쓱 넘기며 정리. 왼쪽은 휴지통, 오른쪽은 유지.</p>
+        <span class="free">삭제까지 완전 무료</span>
+      </div>
+      <div class="feature">
+        <div class="glyph">🪞</div>
+        <h3>겹침</h3>
+        <p>같은 순간에 찍힌 닮은 사진을 묶어, 가장 잘 나온 한 장만 남겨요.</p>
+      </div>
+      <div class="feature">
+        <div class="glyph">🎈</div>
+        <h3>사진첩 다이어트</h3>
+        <p>필요 이상으로 큰 초고화질을 고화질로. 티 안 나게 용량만 줄어요.</p>
+      </div>
+      <div class="feature">
+        <div class="glyph">🐘</div>
+        <h3>큰 파일</h3>
+        <p>무거운 사진·영상부터 정렬해 미리 보고, 여러 개를 한 번에.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="safety">
+  <div class="wrap">
+    <h2>함부로 지우지 않아요</h2>
+    <p class="lead">실수로 소중한 사진이 사라질 수 없는 구조</p>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><div><b>쓰레받기에 먼저 담겨요</b><span>고른 사진은 바로 지워지지 않고 대기해요.</span></div></div>
+      <div class="step"><div class="n">2</div><div><b>두 번 확인해요</b><span>앱에서 한 번, iOS 시스템 확인까지 한 번 더.</span></div></div>
+      <div class="step"><div class="n">3</div><div><b>30일간 되돌릴 수 있어요</b><span>삭제된 사진은 기기의 '최근 삭제됨'에 보관돼요. 영구 삭제는 사진 앱에서 직접 하실 때만 이뤄져요.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>정직한 가격</h2>
+    <p class="lead">주 단위 몰래 결제 없음 · 모든 처리는 기기 안에서만</p>
+    <div class="plans">
+      <div class="plan hot">
+        <div class="name">Pro 연간</div>
+        <div class="price">₩19,000<span class="per"> /년</span></div>
+        <div class="note">3일 무료 체험 · 월 1,583원꼴</div>
+      </div>
+      <div class="plan">
+        <div class="name">Pro 평생</div>
+        <div class="price">₩39,000</div>
+        <div class="note">한 번 결제, 구독 없음</div>
+      </div>
+    </div>
+    <p class="honest">쓸기(수동 정리)는 무료로도 끝까지. Pro는 겹침·다이어트·큰 파일 자동 정리를 잠금 해제해요.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a href="privacy/">개인정보 처리방침</a>·<a href="terms/">이용약관</a>
+    <p style="margin-top:14px">© 2026 ForgeLab · Jason Lee</p>
+  </div>
+</footer>
+
+</body>
+</html>
