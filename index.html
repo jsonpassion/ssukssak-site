@@ -21,6 +21,8 @@
     font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", sans-serif;
     background: var(--bg); color: var(--ink); line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    word-break: keep-all;   /* 한글이 단어 중간에서 줄바꿈되지 않도록 */
+    overflow-wrap: break-word;
   }
   .wrap { max-width: 1024px; margin: 0 auto; padding: 0 24px; }
 
@@ -187,8 +189,16 @@
   }
   .plan.hot { border-color: var(--mint); box-shadow: 0 14px 36px rgba(43,217,162,.16); }
   .plan .name { font-weight: 800; font-size: 15px; color: var(--sub); }
-  .plan .price { font-size: 30px; font-weight: 900; margin-top: 8px; letter-spacing: -0.5px; }
+  .plan .price { font-size: 30px; font-weight: 900; margin-top: 4px; letter-spacing: -0.5px; }
   .plan .per { font-size: 13px; color: var(--sub); font-weight: 600; }
+  .plan .was {
+    font-size: 15px; font-weight: 700; color: var(--coral); margin-top: 8px;
+    text-decoration: line-through; text-decoration-thickness: 2px;
+  }
+  .plan .off {
+    display: inline-block; margin-top: 8px; font-size: 12px; font-weight: 800;
+    color: #fff; background: var(--coral); padding: 3px 10px; border-radius: 999px;
+  }
   .plan .note { margin-top: 10px; font-size: 13px; color: var(--teal); font-weight: 700; }
   .plan ul { list-style: none; margin-top: 16px; text-align: left; }
   .plan li { font-size: 13.5px; color: var(--sub); padding: 4px 0 4px 22px; position: relative; }
@@ -215,6 +225,26 @@
   .f-copy { margin-left: auto; }
   .f-biz { flex-basis: 100%; font-size: 12px; color: var(--sub); }
   @media (max-width: 560px) { .f-copy { margin-left: 0; } }
+
+  /* ---------- 첫 방문 온보딩 오버레이 (탭하면 쓱 걷힘) ---------- */
+  .coach {
+    position: fixed; inset: 0; z-index: 200; cursor: pointer;
+    background: rgba(8, 40, 35, .74);
+    -webkit-backdrop-filter: blur(7px); backdrop-filter: blur(7px);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform .6s cubic-bezier(.5, 0, .25, 1), opacity .6s ease;
+  }
+  .coach.sweeping { transform: translate(-38%, -66%) rotate(-7deg); opacity: 0; pointer-events: none; }
+  .coach-inner { text-align: center; color: #fff; padding: 24px; max-width: 420px; }
+  .coach-lottie { width: 150px; height: 150px; margin: 0 auto; }
+  .coach-inner h2 { font-size: 28px; font-weight: 900; letter-spacing: -0.4px; }
+  .coach-inner p { font-size: 16px; opacity: .88; margin-top: 12px; line-height: 1.65; }
+  .coach-arrow { width: 84px; height: 84px; margin: 18px auto 0; }
+  .coach-hint {
+    display: inline-block; margin-top: 4px; font-weight: 800; font-size: 14px;
+    background: var(--mint); color: var(--ink); padding: 11px 24px; border-radius: 999px;
+    box-shadow: 0 8px 24px rgba(43, 217, 162, .3);
+  }
 </style>
 </head>
 <body>
@@ -241,7 +271,7 @@
       <span class="tag">iOS 사진 정리 · 100% 온디바이스</span>
       <h1>쓱 넘기고,<br><span class="hl">싹</span> 비워요</h1>
       <p class="sub">겹친 사진과 큰 파일을 찾아 한 번에 정리하는 가장 산뜻한 방법.
-      열자마자 <strong>얼마나 가벼워질 수 있는지</strong>부터 보여드려요.</p>
+      열자마자 <strong>얼마나 가벼워질 수 있는지</strong> 먼저 보여드려요.</p>
       <div class="hero-ctas">
         <a class="store" href="#" onclick="alert('App Store 출시 준비 중입니다!'); return false;">App Store <span>· 출시 준비 중</span></a>
         <a class="ghost" href="#how">어떻게 쓰나요?</a>
@@ -397,23 +427,27 @@
         </ul>
       </div>
       <div class="plan hot">
+        <div class="off">출시 특가 34% ↓</div>
         <div class="name">Pro 연간</div>
+        <div class="was">₩29,000</div>
         <div class="price">₩19,000<span class="per"> /년</span></div>
         <div class="note">3일 무료 체험 · 월 1,583원꼴</div>
         <ul>
           <li>무료 기능 전부</li>
           <li>겹침 일괄 정리</li>
-          <li>사진첩 다이어트 실행</li>
+          <li>사진첩 다이어트</li>
           <li>큰 파일 일괄 정리</li>
         </ul>
       </div>
       <div class="plan">
+        <div class="off">출시 특가 34% ↓</div>
         <div class="name">Pro 평생</div>
+        <div class="was">₩59,000</div>
         <div class="price">₩39,000</div>
         <div class="note">한 번 결제, 구독 없음</div>
         <ul>
-          <li>Pro 연간과 동일</li>
-          <li>영원히 소유</li>
+          <li>Pro 연간과 같은 전 기능</li>
+          <li>업데이트 평생 무료</li>
         </ul>
       </div>
     </div>
@@ -440,6 +474,17 @@
   </div>
 </footer>
 
+<!-- 첫 방문 온보딩 오버레이 — 탭하면 쓱 걷힘 -->
+<div id="coach" class="coach" role="dialog" aria-label="시작 안내">
+  <div class="coach-inner">
+    <div class="coach-lottie" data-lottie="assets/lottie/broom_hello.json"></div>
+    <h2>쓱싹에 오신 걸 환영해요</h2>
+    <p>겹친 사진과 큰 파일을 찾아 한 번에 싹 비우는<br>가장 산뜻한 사진 정리 앱이에요.</p>
+    <div class="coach-arrow" data-lottie="assets/lottie/arrow_bounce.json"></div>
+    <div class="coach-hint">아무 곳이나 탭하면 시작해요</div>
+  </div>
+</div>
+
 <script src="https://unpkg.com/lottie-web@5.12.2/build/player/lottie.min.js"></script>
 <script>
   // 로티 일괄 로드
@@ -449,6 +494,21 @@
       path: el.getAttribute('data-lottie')
     });
   });
+
+  // 첫 방문 온보딩 오버레이 — 최초 1회만, 탭하면 쓱 걷힌다.
+  (function () {
+    var coach = document.getElementById('coach');
+    if (!coach) return;
+    if (localStorage.getItem('ssukssak_coach_v1')) { coach.remove(); return; }
+    document.body.style.overflow = 'hidden';
+    function dismiss() {
+      coach.classList.add('sweeping');
+      localStorage.setItem('ssukssak_coach_v1', '1');
+      document.body.style.overflow = '';
+      setTimeout(function () { coach.remove(); }, 650);
+    }
+    coach.addEventListener('click', dismiss);
+  })();
 
   // 미리 해보기 데모
   var demoData = [
