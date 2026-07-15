@@ -88,6 +88,25 @@
   .aurora .a4 { width: 360px; height: 360px; right: 24%; top: 40%; background: radial-gradient(circle, rgba(252,238,201,.16), transparent 60%); animation-delay: -3s; }
   @keyframes drift { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(3%,4%) scale(1.08); } }
 
+  /* 시네마틱 비디오 배경 (Higgsfield) — 히어로·CTA·스테이트먼트 밴드 공용 */
+  .cine-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+  .cine-scrim {
+    position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background: radial-gradient(125% 105% at 50% 42%, rgba(4,35,31,.30) 0%, rgba(4,35,31,.60) 68%, rgba(4,35,31,.84) 100%);
+  }
+  .hero h1, .hero .sub, .cta h2, .cta p { text-shadow: 0 2px 26px rgba(2,20,17,.55); }
+
+  /* 시네마틱 스테이트먼트 밴드 (두 라이트 섹션 사이 다크 브레이크) */
+  .band {
+    position: relative; overflow: hidden; isolation: isolate; text-align: center; color: #EAFBF5;
+    min-height: 460px; display: flex; align-items: center; background: var(--night);
+  }
+  .band-inner { position: relative; z-index: 3; }
+  .band h2 { font-size: clamp(28px, 4.8vw, 48px); font-weight: 900; letter-spacing: -.9px; line-height: 1.16; text-shadow: 0 2px 26px rgba(2,20,17,.6); }
+  .band h2 .hl { background: linear-gradient(100deg, var(--mint), var(--aqua)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .band p { color: #C6E6DD; margin-top: 14px; font-size: clamp(15px, 2vw, 18px); text-shadow: 0 2px 20px rgba(2,20,17,.55); }
+  @media (max-width: 680px) { .band { min-height: 380px; } }
+
   .hero-inner { position: relative; z-index: 3; }
   .kicker {
     display: inline-flex; align-items: center; gap: 8px;
@@ -285,7 +304,8 @@
   .cta h2 { font-size: clamp(28px, 4.2vw, 42px); font-weight: 900; margin-top: 6px; letter-spacing: -.8px; position: relative; z-index: 3; }
   .cta h2 .hl { background: linear-gradient(100deg, var(--mint), var(--aqua)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
   .cta p { color: #A9C8C1; margin-top: 12px; position: relative; z-index: 3; }
-  .cta .hero-ctas { margin-top: 28px; }
+  .cta .wrap { position: relative; z-index: 3; }
+  .cta .hero-ctas { margin-top: 28px; position: relative; z-index: 3; }
 
   /* ---------- FOOTER ---------- */
   footer { background: var(--night); color: #9FBDB6; padding: 40px 0 52px; font-size: 13px; }
@@ -342,14 +362,10 @@
 <!-- HERO -->
 <header class="hero grain" id="download">
   <div class="aurora" aria-hidden="true"><i class="a1"></i><i class="a2"></i><i class="a3"></i><i class="a4"></i></div>
-
-  <div class="hero-cards" aria-hidden="true">
-    <div class="pcard c1"><div class="thumb">🏔️</div><div class="meta"><span class="sz">4.2 MB</span><span class="mk trash"></span></div></div>
-    <div class="pcard c2 dup"><div class="thumb">🍜</div><div class="meta"><span class="sz">겹침 ×3</span><span class="mk trash"></span></div></div>
-    <div class="pcard c3"><div class="thumb">🌅</div><div class="meta"><span class="sz">가족</span><span class="mk keep"></span></div></div>
-    <div class="pcard c4"><div class="thumb">🎞️</div><div class="meta"><span class="sz">218 MB</span><span class="mk trash"></span></div></div>
-    <div class="pcard c5"><div class="thumb">🌸</div><div class="meta"><span class="sz">2.8 MB</span><span class="mk keep"></span></div></div>
-  </div>
+  <video class="cine-video" data-band autoplay muted loop playsinline preload="metadata" poster="assets/video/hero.jpg" aria-hidden="true">
+    <source src="assets/video/hero.mp4" type="video/mp4">
+  </video>
+  <div class="cine-scrim" aria-hidden="true"></div>
 
   <div class="wrap hero-inner">
     <span class="kicker"><span class="dot"></span>iOS 전용 · 모든 처리는 기기 안에서</span>
@@ -506,6 +522,18 @@
   </div>
 </section>
 
+<!-- STATEMENT BAND (cinematic) -->
+<section class="band grain" aria-label="쓱싹 한 줄 소개">
+  <video class="cine-video" data-band muted loop playsinline preload="none" poster="assets/video/sweep.jpg" aria-hidden="true">
+    <source src="assets/video/sweep.mp4" type="video/mp4">
+  </video>
+  <div class="cine-scrim" aria-hidden="true"></div>
+  <div class="wrap band-inner">
+    <h2 class="reveal">쌓여 있던 사진들,<br><span class="hl">빛으로 쓸어내듯</span> 산뜻하게</h2>
+    <p class="reveal" style="--i:1">겹친 순간도, 무거운 영상도 — 한 번의 손짓이면 충분해요.</p>
+  </div>
+</section>
+
 <!-- PRICING -->
 <section id="pricing">
   <div class="wrap">
@@ -555,8 +583,11 @@
 <!-- CTA -->
 <section class="cta grain">
   <div class="aurora" aria-hidden="true"><i class="a1"></i><i class="a2"></i><i class="a3"></i></div>
+  <video class="cine-video" data-band autoplay muted loop playsinline preload="none" poster="assets/video/cta.jpg" aria-hidden="true">
+    <source src="assets/video/cta.mp4" type="video/mp4">
+  </video>
+  <div class="cine-scrim" aria-hidden="true"></div>
   <div class="wrap">
-    <div class="anim" data-lottie="assets/lottie/broom_hello.json"></div>
     <h2>오늘, 사진첩을 <span class="hl">가볍게</span></h2>
     <p>App Store 출시 준비 중이에요. 곧 만나요!</p>
     <div class="hero-ctas">
@@ -600,6 +631,25 @@
       path: el.getAttribute('data-lottie')
     });
   });
+
+  // 시네마틱 배경 비디오 — 화면 밖이면 일시정지(성능), reduced-motion이면 포스터만
+  (function () {
+    var vids = document.querySelectorAll('video[data-band]');
+    if (!vids.length) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      vids.forEach(function (v) { v.removeAttribute('autoplay'); try { v.pause(); } catch (e) {} });
+      return;
+    }
+    if (!('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        var v = e.target;
+        if (e.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+        else { v.pause(); }
+      });
+    }, { threshold: 0.12 });
+    vids.forEach(function (v) { io.observe(v); });
+  })();
 
   // 스크롤 리빌 (IntersectionObserver) — 카드가 한쪽에서 펼쳐지듯 등장
   (function () {
