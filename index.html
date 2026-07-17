@@ -31,6 +31,10 @@
     -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
     word-break: keep-all; overflow-wrap: break-word; overflow-x: hidden;
   }
+  /* 한글 줄바꿈 품질 — 제목은 줄 길이 균형, 본문은 외톨이 낱말 방지 (미지원 브라우저 무해) */
+  h1, h2, h3 { text-wrap: balance; }
+  p, .srow span, .plan .note, .demo-note { text-wrap: pretty; }
+  .nowrap, #demoTray { white-space: nowrap; }
   .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
   a { color: inherit; }
 
@@ -394,7 +398,7 @@
   <div class="wrap hero-inner">
     <span class="kicker"><span class="dot"></span>iOS 전용 · 모든 처리는 기기 안에서</span>
     <h1>쓱 넘기고,<br><span class="hl">싹</span> 비워요</h1>
-    <p class="sub">겹친 사진, 초고화질, 큰 파일. 사진첩을 무겁게 만드는 것들을 찾아 한 번에 걷어내요.
+    <p class="sub">겹친 사진, 초고화질, 큰 파일. 사진첩을 무겁게 만드는 것들을 찾아 한&nbsp;번에 걷어내요.
     열자마자 <strong>얼마나 가벼워질지</strong> 먼저 보여드릴게요.</p>
     <div class="hero-ctas">
       <a class="store" href="#" onclick="alert('App Store 출시 준비 중입니다!'); return false;">
@@ -417,7 +421,7 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="eyebrow">How it works</div>
-      <h2>빗자루처럼, 네 번의 손짓</h2>
+      <h2>빗자루처럼, 네&nbsp;번의 손짓</h2>
       <p>쓱 훑고, 골라 담고, 다시 확인하고, 싹 비워요. 5분이면 사진첩이 한결 가벼워져요.</p>
     </div>
     <div class="steps">
@@ -436,8 +440,8 @@
       <div class="step reveal from-left" style="--i:2">
         <div class="anim" data-lottie="assets/lottie/dustpan_fill.json"></div>
         <span class="n">STEP 3</span>
-        <h3>쓰레받기에서 확인</h3>
-        <p>담긴 사진을 한 번 더 훑어보고, iOS 시스템 확인까지 — 두 번 확인해요.</p>
+        <h3>쓰레받기에서 확인해요</h3>
+        <p>담긴 사진을 한&nbsp;번&nbsp;더 훑어보고, iOS 시스템 확인까지 거쳐요.</p>
       </div>
       <div class="step reveal from-left" style="--i:3">
         <div class="anim" data-lottie="assets/lottie/broom_sweep.json"></div>
@@ -462,7 +466,7 @@
         <div class="anim" data-lottie="assets/lottie/swipe_cards.json"></div>
         <div>
           <h3>쓸기</h3>
-          <p>한 장씩 쓱 넘기며 정리. 파일 크기를 보면서 마음 편히 판단하세요.</p>
+          <p>한&nbsp;장씩 쓱 넘기며 정리. 파일 크기를 보면서 마음 편히 판단하세요.</p>
           <span class="free">삭제까지 완전 무료</span>
         </div>
       </div>
@@ -470,21 +474,21 @@
         <div class="anim" data-lottie="assets/lottie/stack_merge.json"></div>
         <div>
           <h3>겹침</h3>
-          <p>같은 순간에 찍힌 닮은 사진을 묶어, 가장 잘 나온 한 장만 남겨요.</p>
+          <p>같은 순간에 찍힌 닮은 사진을 묶어, 가장 잘 나온 한&nbsp;장만 남겨요.</p>
         </div>
       </div>
       <div class="feature reveal from-left" style="--i:1; --tint: rgba(232,131,77,.16)">
         <div class="anim" data-lottie="assets/lottie/vacuum_shrink.json"></div>
         <div>
           <h3>사진첩 다이어트</h3>
-          <p>필요 이상으로 큰 초고화질을 고화질로. 눈으론 그대로인데 용량만 쏙. 위치·날짜는 그대로예요.</p>
+          <p>필요 이상으로 큰 초고화질을 고화질로. 눈으론 차이 없이 용량만 쏙 줄어요. 위치·날짜 정보는 그대로예요.</p>
         </div>
       </div>
       <div class="feature reveal from-right" style="--i:1; --tint: rgba(240,115,107,.16)">
         <div class="anim" data-lottie="assets/lottie/gauge_free.json"></div>
         <div>
           <h3>큰 파일</h3>
-          <p>무거운 사진·영상부터 정렬해 미리 보고, 여러 개를 한 번에 골라 정리해요.</p>
+          <p>무거운 사진·영상부터 차례로 살펴보고, 여러 개를 한&nbsp;번에 골라 정리해요.</p>
         </div>
       </div>
     </div>
@@ -521,7 +525,7 @@
       <div class="demo-done" id="demoDone">
         <div class="anim" data-lottie="assets/lottie/sparkle_clean.json"></div>
         <h3 id="demoResult">싹! 다 정리했어요</h3>
-        <p>실제 앱에선 이제 쓰레받기에서 한 번 더 확인한 뒤 비워요.<br>지운 사진은 30일간 되돌릴 수 있고요.</p>
+        <p>실제 앱에선 이제 쓰레받기에서 한&nbsp;번&nbsp;더 확인한 뒤 비워요.<br>지운 사진은 30일간 되돌릴 수 있고요.</p>
         <button class="demo-reset" onclick="demoReset()">다시 해보기</button>
       </div>
     </div>
@@ -546,11 +550,11 @@
         </div>
         <div class="srow">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
-          <div><b>두 번 확인해요</b><span>앱에서 한 번, iOS 시스템 확인까지 한 번 더.</span></div>
+          <div><b>두&nbsp;번 확인해요</b><span>앱에서 한&nbsp;번, iOS 시스템 확인까지 한&nbsp;번&nbsp;더.</span></div>
         </div>
         <div class="srow">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></div>
-          <div><b>30일간 되돌릴 수 있어요</b><span>지운 사진은 기기의 ‘최근 삭제됨’에 남아요. 영구 삭제는 사진 앱에서 직접 하실 때만 이뤄져요.</span></div>
+          <div><b>30일간 되돌릴 수 있어요</b><span>지운 사진은 기기의 ‘최근 삭제됨’에 남아요. 영구&nbsp;삭제는 사진 앱에서 직접 하실 때만 이뤄져요.</span></div>
         </div>
       </div>
     </div>
@@ -565,7 +569,7 @@
   <div class="cine-scrim" aria-hidden="true"></div>
   <div class="wrap band-inner">
     <h2 class="reveal">쌓여 있던 사진들,<br><span class="hl">빛으로 쓸어내듯</span> 산뜻하게</h2>
-    <p class="reveal" style="--i:1">겹친 순간도, 무거운 영상도 — 한 번의 손짓이면 충분해요.</p>
+    <p class="reveal" style="--i:1">겹친 순간도, 무거운 영상도 — 한&nbsp;번의 손짓이면 충분해요.</p>
   </div>
 </section>
 
@@ -593,7 +597,7 @@
         <div class="name">PRO 연간</div>
         <div class="was">₩29,000</div>
         <div class="price">₩19,000<span class="per"> /년</span></div>
-        <div class="note">3일 무료 체험 · 월 1,583원꼴</div>
+        <div class="note">3일 무료 체험 · <span class="nowrap">월 1,583원꼴</span></div>
         <ul>
           <li>무료 기능 전부</li>
           <li>겹침 일괄 정리</li>
@@ -651,7 +655,7 @@
   <div class="coach-inner">
     <div class="coach-lottie" data-lottie="assets/lottie/broom_hello.json"></div>
     <h2>쓱싹에 <span class="hl">오신 걸</span> 환영해요</h2>
-    <p>겹친 사진과 큰 파일을 찾아 한 번에 싹 비우는<br>가장 산뜻한 사진 정리 앱이에요.</p>
+    <p>겹친 사진과 큰 파일을 찾아 한&nbsp;번에 싹 비우는<br>가장 산뜻한 사진 정리 앱이에요.</p>
     <div class="coach-arrow" data-lottie="assets/lottie/arrow_bounce.json"></div>
     <div class="coach-hint">아무 곳이나 탭하면 시작해요</div>
   </div>
