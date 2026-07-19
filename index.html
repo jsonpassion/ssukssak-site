@@ -311,7 +311,10 @@
 
   /* ---------- PRICING ---------- */
   .plans { display: grid; grid-template-columns: 1fr 1.08fr 1fr; gap: 18px; margin-top: 52px; align-items: stretch; }
+  /* 무료 / Pro 2열 — 가운데 정렬로 폭 고정 */
+  .plans-2 { grid-template-columns: 1fr 1.06fr; max-width: 760px; margin-left: auto; margin-right: auto; }
   @media (max-width: 820px) { .plans { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; } }
+  .price-foot { text-align: center; margin-top: 26px; font-size: 14px; color: var(--sub); font-weight: 600; }
   .plan { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 32px 26px; text-align: center; box-shadow: var(--shadow-card); display: flex; flex-direction: column; }
   .plan.hot {
     border: none; color: #EAFBF5;
@@ -622,44 +625,36 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="eyebrow">Pricing</div>
-      <h2>정직한 가격</h2>
-      <p>주 단위로 몰래 빠져나가는 결제 없이, 필요한 만큼만.</p>
+      <h2>커피 한 잔 값, 딱 한 번</h2>
+      <p>구독 없어요. 매주·매달 빠져나가는 요금도 없어요.</p>
     </div>
-    <div class="plans">
+    <div class="plans plans-2">
       <div class="plan reveal" style="--i:0">
-        <div class="name">무료</div>
+        <div class="name">무료로 시작</div>
         <div class="price">₩0</div>
-        <div class="note">영원히</div>
+        <div class="note">설치하면 바로</div>
         <ul>
-          <li>쓸기 — 삭제까지 무제한</li>
-          <li>겹침·다이어트·큰 파일 탐색</li>
-          <li>절약 가능 용량 미리 보기</li>
+          <li>네 기능 모두 <b>탐색·스캔 무제한</b></li>
+          <li>쓰레받기에 담기 무제한</li>
+          <li>비울 수 있는 용량 미리 보기</li>
+          <li>실제 비우기 <b>30장까지</b></li>
         </ul>
       </div>
       <div class="plan hot reveal" style="--i:1">
-        <div class="off">출시 특가 34% ↓</div>
-        <div class="name">PRO 연간</div>
-        <div class="was">₩29,000</div>
-        <div class="price">₩19,000<span class="per"> /년</span></div>
-        <div class="note">3일 무료 체험 · <span class="nowrap">월 1,583원꼴</span></div>
+        <div class="off">한 번만 결제</div>
+        <div class="name">PRO</div>
+        <div class="price">₩5,900</div>
+        <div class="note">평생 · 자동 갱신 없음</div>
         <ul>
-          <li>무료 기능 전부</li>
+          <li><b>비우기 무제한</b> — 장수 제한 없이</li>
           <li>겹침 일괄 정리</li>
           <li>사진첩 다이어트</li>
           <li>큰 파일 일괄 정리</li>
-        </ul>
-      </div>
-      <div class="plan reveal" style="--i:2">
-        <div class="name">PRO 평생</div>
-        <div class="was">₩59,000</div>
-        <div class="price">₩39,000</div>
-        <div class="note">한 번 결제, 구독 없음</div>
-        <ul>
-          <li>Pro 연간과 같은 전 기능</li>
           <li>업데이트 평생 무료</li>
         </ul>
       </div>
     </div>
+    <p class="price-foot reveal">30장을 비워 보고 마음에 들면 그때 결정하세요.<br>한 번 결제하면 기기를 바꿔도 ‘복원’으로 계속 쓸 수 있어요.</p>
   </div>
 </section>
 
