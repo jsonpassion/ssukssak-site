@@ -19,13 +19,22 @@
   ul { padding-left:22px; margin-top:8px; }
   footer { margin-top:56px; font-size:13px; color:var(--sub); }
   a { color:var(--teal); }
+
+  .lang-row { display:flex; justify-content:space-between; align-items:center; }
+  .lang-btn { display:inline-flex; align-items:center; gap:6px; height:32px; padding:0 12px; border-radius:999px;
+              border:1px solid var(--line); background:#fff; color:var(--ink); font:inherit; font-size:13px; font-weight:700; cursor:pointer; }
+  [data-lang][hidden] { display:none; }
 </style>
 </head>
-<body>
+<body data-title-ko="이용약관 — 쓱싹" data-title-en="Terms of Use — SwipeSweep">
 <div class="wrap">
-  <a class="back" href="../">← 쓱싹</a>
+  <div class="lang-row">
+    <a class="back" href="../" data-back>← 쓱싹</a>
+    <button class="lang-btn" id="langBtn" type="button" aria-label="Language / 언어"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c3 3.2 3 15.8 0 19M12 2.5c-3 3.2-3 15.8 0 19"/></svg><span id="langLabel">EN</span></button>
+  </div>
+<div data-lang="ko">
   <h1>이용약관</h1>
-  <p class="date">시행일: 2026년 7월 14일</p>
+  <p class="date">시행일: 2026년 7월 14일 · 개정: 2026년 9월 11일</p>
 
   <h2>1. 서비스 개요</h2>
   <p>쓱싹(이하 "앱")은 ForgeLab(개발자 Jason Lee)이 제공하는 iOS용 사진 정리 도구입니다. 앱은 사용자의 기기 안에서만 동작하며, 별도의 계정이나 서버를 사용하지 않습니다.</p>
@@ -33,13 +42,14 @@
   <h2>2. 사용권</h2>
   <p>앱은 Apple 표준 최종 사용자 사용권 계약(<a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Apple Standard EULA</a>)에 따라 라이선스됩니다. 앱을 개인적·비상업적 용도로 iOS 기기에서 사용할 수 있는 비독점적 권리가 부여됩니다.</p>
 
-  <h2>3. 무료 이용 범위와 쓱싹 Pro 결제</h2>
+  <h2>3. 무료 이용 범위와 쓱싹 Pro 이용권</h2>
   <ul>
-    <li><b>무료 이용</b>: 설치 후 별도 결제 없이 네 가지 정리 기능(쓸기·겹침·사진첩 다이어트·큰 파일)의 탐색·스캔·미리보기와 쓰레받기에 담기를 <b>횟수 제한 없이</b> 사용할 수 있습니다. 실제 삭제(쓰레받기 비우기)는 <b>누적 30장</b>까지 무료로 제공됩니다.</li>
-    <li><b>쓱싹 Pro</b>: 1회 결제 <b>₩1,500</b>(대한민국 기준, 미국 US$0.99 — 비소모성 상품)입니다. 결제하면 삭제 장수 제한이 사라지고 모든 기능을 기간 제한 없이 사용할 수 있습니다.</li>
-    <li><b>구독이 아닙니다.</b> 자동 갱신이 없으며 주·월·연 단위로 반복 청구되지 않습니다. 별도의 해지 절차도 필요하지 않습니다.</li>
-    <li>비소모성 상품이므로 기기를 변경하거나 앱을 재설치해도 동일한 Apple 계정에서 앱 내 <b>'복원'</b>으로 다시 사용할 수 있습니다.</li>
-    <li>가격은 App Store의 국가·지역별 가격 정책에 따라 다를 수 있으며, 실제 청구 금액은 결제 시점에 App Store가 표시하는 금액을 따릅니다.</li>
+    <li><b>무료 이용</b>: 설치 후 별도 결제 없이 네 가지 정리 기능(쓸기·겹침·사진첩 다이어트·큰 파일)의 탐색·스캔·미리보기와 쓰레받기에 담기를 제한 없이 사용할 수 있으며, 실제 비우기(삭제)는 누적 30장까지 무료입니다.</li>
+    <li><b>쓱싹 Pro 이용권</b>은 세 가지입니다 — 월간 구독, 연간 구독, 평생 이용권(비소모성 상품). 어느 것을 선택하든 권한은 동일하며, 결제 후에는 비우기 장수 제한이 사라집니다. 가격은 App Store 결제 화면에 표시되는 금액을 따릅니다.</li>
+    <li><b>자동 갱신 구독</b>(월간·연간)은 Apple 계정으로 결제되며, 현재 기간이 끝나기 24시간 전까지 해지하지 않으면 같은 가격으로 자동 갱신됩니다. 해지는 기기의 설정 › Apple 계정 › 구독에서 언제든 할 수 있고, 해지해도 이미 결제한 기간이 끝날 때까지는 계속 이용할 수 있습니다.</li>
+    <li><b>평생 이용권</b>은 한 번 결제로 영구히 이용하며 자동 갱신이나 추가 결제가 없습니다.</li>
+    <li>기기를 변경하거나 앱을 재설치해도 동일한 Apple 계정에서 앱 내 <b>'구매 복원'</b>으로 다시 사용할 수 있습니다.</li>
+    <li>가격은 App Store의 국가·지역별 가격 정책에 따라 다를 수 있으며, 실제 청구 금액은 결제 시점에 App Store가 표시하는 금액입니다. 가격이 변경되는 경우 Apple의 정책에 따라 사전에 고지됩니다.</li>
     <li>결제 내역 확인 및 환불 요청은 Apple 계정에서 관리하며, 환불은 Apple의 환불 정책을 따릅니다.</li>
   </ul>
 
@@ -66,5 +76,65 @@
     <p style="margin-top:10px">© 2026 ForgeLab<br>ForgeLab · 대표 Jason Lee</p>
   </footer>
 </div>
+<div data-lang="en" hidden>
+  <h1>Terms of Use</h1>
+  <p class="date">Effective July 14, 2026 · Revised September 11, 2026</p>
+
+  <h2>1. The service</h2>
+  <p>SwipeSweep (the "App") is an iOS photo cleanup tool provided by ForgeLab (developer: Jason Lee). The App runs entirely on your device with no server or account. Photos and videos never leave your device.</p>
+
+  <h2>2. License</h2>
+  <p>The App is licensed under Apple's standard End User License Agreement (<a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Apple Licensed Application EULA</a>). Where these Terms and the EULA differ, the EULA prevails.</p>
+
+  <h2>3. Free use and SwipeSweep Pro passes</h2>
+  <ul>
+    <li><b>Free use</b>: after installing, all four tools (Swipe, Duplicates, Photo Slimming, Large Files) can browse, scan, preview and stage photos in the tray without limit and without payment. Actually emptying the tray (deleting) is free for your first 30 photos in total.</li>
+    <li><b>SwipeSweep Pro</b> comes as three passes — a monthly subscription, a yearly subscription, and a lifetime pass (non-consumable). All three unlock the same thing: the emptying limit is removed. Prices are the ones shown on the App Store payment sheet.</li>
+    <li><b>Auto-renewing subscriptions</b> (monthly, yearly) are billed to your Apple Account and renew automatically at the same price unless canceled at least 24 hours before the end of the current period. You can cancel anytime in Settings › Apple Account › Subscriptions; after canceling you keep access until the paid period ends.</li>
+    <li><b>The lifetime pass</b> is a one-time purchase with no auto-renewal or further charges.</li>
+    <li>After switching devices or reinstalling, use <b>Restore purchases</b> in the App with the same Apple Account to regain access.</li>
+    <li>Prices may vary by App Store country or region; the amount charged is the one the App Store shows at the time of purchase. Price changes are announced in advance according to Apple's policies.</li>
+    <li>Purchase history and refund requests are handled through your Apple Account under Apple's refund policy.</li>
+  </ul>
+
+  <h2>4. Responsibility for deleted photos</h2>
+  <ul>
+    <li>Every deletion in the App runs only after you select the items yourself and approve them twice (once in the App, once in the iOS system dialog).</li>
+    <li>Deleted items stay in the iOS "Recently Deleted" album for about 30 days and can be recovered during that time. Permanent deletion happens only when you empty "Recently Deleted" yourself in the Photos app.</li>
+    <li>The developer is not liable for data loss caused by your own actions (approving the system dialog, emptying "Recently Deleted", and so on).</li>
+  </ul>
+
+  <h2>5. Disclaimer of warranty</h2>
+  <p>The App is provided "as is". The developer does not guarantee uninterrupted operation in every environment and, to the extent permitted by law, disclaims all express or implied warranties.</p>
+
+  <h2>6. Changes to these Terms</h2>
+  <p>Changes are announced on this page. Continuing to use the App after a change means you accept the updated Terms.</p>
+
+  <h2>7. Contact</h2>
+  <p>Questions about these Terms? Use the button below.</p>
+  <p style="margin-top:14px"><a href="mailto:forgelab.aitech@gmail.com?subject=%5BSwipeSweep%5D%20Terms" style="display:inline-flex;align-items:center;gap:6px;background:var(--teal);color:#fff;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:999px;font-size:14px">✉️ Contact</a></p>
+
+  <footer>
+    <a href="../privacy/" style="color:var(--teal);text-decoration:none;font-weight:600">Privacy Policy</a> ·
+    <a href="../terms/" style="color:var(--teal);text-decoration:none;font-weight:600">Terms of Use</a>
+    <p style="margin-top:10px">© 2026 ForgeLab<br>ForgeLab · Jason Lee</p>
+  </footer>
+</div>
+</div>
+<script>
+  (function () {
+    function lang() { try { return localStorage.getItem('ss.lang') || 'ko'; } catch (e) { return 'ko'; } }
+    function apply(l) {
+      document.querySelectorAll('[data-lang]').forEach(function (b) { b.hidden = b.getAttribute('data-lang') !== l; });
+      document.documentElement.lang = l;
+      document.getElementById('langLabel').textContent = l === 'en' ? '한국어' : 'EN';
+      document.querySelector('[data-back]').textContent = l === 'en' ? '← SwipeSweep' : '← 쓱싹';
+      document.title = l === 'en' ? document.body.getAttribute('data-title-en') : document.body.getAttribute('data-title-ko');
+      try { localStorage.setItem('ss.lang', l); } catch (e) {}
+    }
+    document.getElementById('langBtn').addEventListener('click', function () { apply(lang() === 'en' ? 'ko' : 'en'); });
+    apply(lang());
+  })();
+</script>
 </body>
 </html>

@@ -19,13 +19,22 @@
   ul { padding-left:22px; margin-top:8px; }
   .box { background:#F0FBF7; border:1px solid var(--line); border-radius:16px; padding:20px 22px; margin-top:24px; font-weight:600; }
   footer { margin-top:56px; font-size:13px; color:var(--sub); }
+
+  .lang-row { display:flex; justify-content:space-between; align-items:center; }
+  .lang-btn { display:inline-flex; align-items:center; gap:6px; height:32px; padding:0 12px; border-radius:999px;
+              border:1px solid var(--line); background:#fff; color:var(--ink); font:inherit; font-size:13px; font-weight:700; cursor:pointer; }
+  [data-lang][hidden] { display:none; }
 </style>
 </head>
-<body>
+<body data-title-ko="개인정보 처리방침 — 쓱싹" data-title-en="Privacy Policy — SwipeSweep">
 <div class="wrap">
-  <a class="back" href="../">← 쓱싹</a>
+  <div class="lang-row">
+    <a class="back" href="../" data-back>← 쓱싹</a>
+    <button class="lang-btn" id="langBtn" type="button" aria-label="Language / 언어"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c3 3.2 3 15.8 0 19M12 2.5c-3 3.2-3 15.8 0 19"/></svg><span id="langLabel">EN</span></button>
+  </div>
+<div data-lang="ko">
   <h1>개인정보 처리방침</h1>
-  <p class="date">시행일: 2026년 7월 14일</p>
+  <p class="date">시행일: 2026년 7월 14일 · 개정: 2026년 9월 11일</p>
 
   <div class="box">
     쓱싹은 어떤 개인정보도 수집하지 않습니다.<br>
@@ -45,7 +54,7 @@
   <p>모든 처리는 기기 내부에서 이뤄지며, 사진·영상·메타데이터가 외부로 전송되는 일은 없습니다.</p>
 
   <h2>3. 결제 정보</h2>
-  <p>쓱싹 Pro 결제는 Apple App Store(StoreKit)를 통해 처리됩니다. 개발자는 카드 정보 등 결제 수단 정보에 접근할 수 없습니다. 결제·환불·구독 해지는 Apple 계정 설정에서 관리할 수 있습니다.</p>
+  <p>쓱싹 Pro 이용권(월간·연간 구독, 평생 이용권) 결제는 Apple App Store(StoreKit)를 통해 처리됩니다. 개발자는 카드 정보 등 결제 수단 정보에 접근할 수 없으며, 앱은 구매 여부와 이용권 종류·갱신일만 기기 안에 저장합니다. 결제·환불·구독 해지는 Apple 계정에서 관리합니다.</p>
 
   <h2>4. 데이터 보관 및 삭제</h2>
   <p>앱이 저장하는 정보는 기기 내 설정값(온보딩 완료 여부, 오늘 비운 용량 통계)뿐이며, 앱을 삭제하면 함께 삭제됩니다.</p>
@@ -66,5 +75,64 @@
     <p style="margin-top:10px">© 2026 ForgeLab<br>ForgeLab · 대표 Jason Lee</p>
   </footer>
 </div>
+<div data-lang="en" hidden>
+  <h1>Privacy Policy</h1>
+  <p class="date">Effective July 14, 2026 · Revised September 11, 2026</p>
+
+  <div class="box">
+    SwipeSweep collects no personal data.<br>
+    Not a single photo leaves your device.
+  </div>
+
+  <h2>1. Data we collect</h2>
+  <p>None. SwipeSweep is an on-device app with no server, no sign-up or login, no analytics, and no advertising SDKs.</p>
+
+  <h2>2. Photo library access</h2>
+  <p>SwipeSweep asks for access to your iOS photo library only to:</p>
+  <ul>
+    <li>List your photos and videos and compute their sizes on the device</li>
+    <li>Find look-alike photos (Apple's Vision framework, processed on the device)</li>
+    <li>Move items you selected and confirmed twice to the system "Recently Deleted" album</li>
+  </ul>
+  <p>All processing happens on your device. Photos, videos and their metadata are never transmitted anywhere.</p>
+
+  <h2>3. Payment information</h2>
+  <p>SwipeSweep Pro passes (monthly and yearly subscriptions, lifetime pass) are processed by the Apple App Store (StoreKit). The developer has no access to your payment details. The App stores only whether you own a pass, which pass it is, and its renewal date — on the device. Purchases, refunds and cancellations are managed in your Apple Account.</p>
+
+  <h2>4. Data retention and deletion</h2>
+  <p>The App keeps only device-local settings (onboarding status, today's freed-space statistics, your language choice). Deleting the App removes them.</p>
+
+  <h2>5. Children's privacy</h2>
+  <p>Because SwipeSweep collects no personal data from anyone, it collects none from children either.</p>
+
+  <h2>6. Changes to this policy</h2>
+  <p>Changes are announced on this page.</p>
+
+  <h2>7. Contact</h2>
+  <p>Questions about privacy? Use the button below.</p>
+  <p style="margin-top:14px"><a href="mailto:forgelab.aitech@gmail.com?subject=%5BSwipeSweep%5D%20Privacy" style="display:inline-flex;align-items:center;gap:6px;background:var(--teal);color:#fff;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:999px;font-size:14px">✉️ Contact</a></p>
+
+  <footer>
+    <a href="../privacy/" style="color:var(--teal);text-decoration:none;font-weight:600">Privacy Policy</a> ·
+    <a href="../terms/" style="color:var(--teal);text-decoration:none;font-weight:600">Terms of Use</a>
+    <p style="margin-top:10px">© 2026 ForgeLab<br>ForgeLab · Jason Lee</p>
+  </footer>
+</div>
+</div>
+<script>
+  (function () {
+    function lang() { try { return localStorage.getItem('ss.lang') || 'ko'; } catch (e) { return 'ko'; } }
+    function apply(l) {
+      document.querySelectorAll('[data-lang]').forEach(function (b) { b.hidden = b.getAttribute('data-lang') !== l; });
+      document.documentElement.lang = l;
+      document.getElementById('langLabel').textContent = l === 'en' ? '한국어' : 'EN';
+      document.querySelector('[data-back]').textContent = l === 'en' ? '← SwipeSweep' : '← 쓱싹';
+      document.title = l === 'en' ? document.body.getAttribute('data-title-en') : document.body.getAttribute('data-title-ko');
+      try { localStorage.setItem('ss.lang', l); } catch (e) {}
+    }
+    document.getElementById('langBtn').addEventListener('click', function () { apply(lang() === 'en' ? 'ko' : 'en'); });
+    apply(lang());
+  })();
+</script>
 </body>
 </html>
