@@ -12,13 +12,13 @@
 <script>document.documentElement.className = 'js';</script>
 <style>
   :root {
-    /* 종이와 잉크: 앱 Theme.swift와 같은 토큰. 강조는 브랜드 틸 하나, 되돌릴 수 없는 것만 코랄 */
-    --paper: #F6F8F7;  --card: #FFFFFF;  --surface: #EEF2F0;
-    --ink: #10221F;    --ink2: rgba(16,34,31,.62);  --ink3: rgba(16,34,31,.40);  --line: rgba(16,34,31,.10);
-    --brand: #149279;  --mint: #29D9A1;  --mint-soft: rgba(41,217,161,.10);
-    --amber: #F2993D;  --coral: #E8544D; --night: #0E231F;
+    /* 종이와 라벤더: 앱 Theme.swift와 같은 토큰. 강조는 브랜드 바이올렛 하나, 되돌릴 수 없는 것만 코랄 */
+    --paper: #F8F6FC;  --card: #FFFFFF;  --surface: #EFECF7;
+    --ink: #211B32;    --ink2: rgba(33,27,50,.62);  --ink3: rgba(33,27,50,.40);  --line: rgba(33,27,50,.10);
+    --brand: #6744D0;  --lilac: #A990E4;  --lilac-soft: rgba(169,144,228,.10);
+    --amber: #F39660;  --coral: #E24A58; --night: #16102A;
     --r-card: 20px; --r-tile: 14px; --r-chip: 10px; --r-sheet: 28px;
-    --shadow-float: 0 18px 44px rgba(16,34,31,.10);
+    --shadow-float: 0 18px 44px rgba(33,27,50,.10);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
@@ -73,18 +73,18 @@
   .nav-cta:hover { opacity: .85; }
   @media (max-width: 720px) { .nav-links a:not(.nav-cta) { display: none; } }
 
-  /* ---------- HERO (종이, 싹이, 폰 목업) ---------- */
+  /* ---------- HERO (종이, 도리, 폰 목업) ---------- */
   .hero { position: relative; padding: 128px 0 72px; overflow: hidden; }
   .hero-inner { display: grid; grid-template-columns: 1.15fr 1fr; gap: 40px; align-items: center; }
   @media (max-width: 860px) { .hero { padding-top: 104px; } .hero-inner { grid-template-columns: 1fr; text-align: center; } }
   .hero-copy .ssagi-wrap { width: 128px; height: 128px; position: relative; }
   @media (max-width: 860px) { .hero-copy .ssagi-wrap { margin: 0 auto; } }
-  /* 싹이 발치의 빛의 스윕, 아이콘의 잔광을 아주 옅게 */
+  /* 도리 발치의 옅은 잔광 */
   .hero-copy .ssagi-wrap::before {
     content: ""; position: absolute; left: -46px; bottom: -6px; width: 150px; height: 46px; z-index: 0;
-    background: radial-gradient(60% 60% at 60% 60%, rgba(41,217,161,.22), transparent 70%);
+    background: radial-gradient(60% 60% at 60% 60%, rgba(169,144,228,.22), transparent 70%);
   }
-  .hero-copy .ssagi-wrap .ssagi { position: relative; z-index: 1; }
+  .hero-copy .ssagi-wrap .dori { position: relative; z-index: 1; }
   .eyebrow-line { margin-top: 18px; font-size: 13px; font-weight: 700; letter-spacing: .2px; color: var(--brand); display: inline-flex; align-items: center; gap: 8px; }
   .eyebrow-line svg { width: 14px; height: 14px; }
   .hero h1 { font-size: clamp(42px, 6.6vw, 72px); font-weight: 900; line-height: 1.04; letter-spacing: -1.8px; margin-top: 10px; }
@@ -102,15 +102,13 @@
   @media (max-width: 860px) { .phone-clip { max-height: 420px; } .phone { width: 240px; border-radius: 40px; } .phone img { border-radius: 31px 31px 0 0; } }
   .phone-cap { font-size: 13px; color: var(--ink2); font-weight: 600; margin-top: -6px; }
 
-  /* ---------- 싹이 (SVG, JS가 그린다) ---------- */
-  .ssagi { display: block; width: 100%; height: 100%; overflow: visible; }
-  .ssagi .body-g { transform-box: fill-box; transform-origin: 50% 100%; animation: sgBreathe 2.6s ease-in-out infinite; }
-  .ssagi.idle .eye { transform-box: fill-box; transform-origin: center; animation: sgBlink 3.8s ease-in-out infinite; }
-  .in .ssagi.happy, .coach .ssagi { animation: sgHop .9s cubic-bezier(.3,.7,.3,1) 1; transform-origin: 50% 100%; }
+  /* ---------- 도리 (앱과 같은 그림, 표정만 다르게 그려 둔 PNG) ---------- */
+  .dori { display: block; width: 100%; height: 100%; object-fit: contain;
+          transform-origin: 50% 100%; animation: sgBreathe 2.6s ease-in-out infinite; }
+  .in .dori.happy, .coach .dori { animation: sgHop .9s cubic-bezier(.3,.7,.3,1) 1; transform-origin: 50% 100%; }
   @keyframes sgBreathe { 0%,100% { transform: scale(1,1); } 50% { transform: scale(1.016,.982); } }
-  @keyframes sgBlink { 0%,90%,100% { transform: scaleY(1); } 94% { transform: scaleY(.12); } 98% { transform: scaleY(1); } }
   @keyframes sgHop { 0% { transform: scale(1.12,.86) translateY(0); } 30% { transform: scale(.92,1.1) translateY(-22px); } 60% { transform: scale(1,1) translateY(0); } 72% { transform: scale(1.08,.9); } 100% { transform: scale(1,1); } }
-  @media (prefers-reduced-motion: reduce) { .ssagi *, .ssagi { animation: none !important; } }
+  @media (prefers-reduced-motion: reduce) { .dori { animation: none !important; } }
 
   /* ---------- 공용 섹션 ---------- */
   section { padding: 88px 0; position: relative; }
@@ -168,7 +166,7 @@
     position: absolute; inset: 0; margin: auto; width: 178px; height: 232px;
     border-radius: 22px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
     color: #fff; font-weight: 800; padding-bottom: 16px; font-size: 14px;
-    box-shadow: 0 14px 34px rgba(16,34,31,.18);
+    box-shadow: 0 14px 34px rgba(33,27,50,.18);
     transition: transform .45s cubic-bezier(.2,.8,.3,1), opacity .45s;
   }
   .demo-card .glyph { font-size: 52px; margin-bottom: auto; margin-top: 30px; filter: drop-shadow(0 4px 10px rgba(0,0,0,.25)); }
@@ -179,7 +177,7 @@
   .demo-btn { flex: 1; max-width: 160px; border: none; cursor: pointer; font-family: inherit; padding: 14px 18px; border-radius: var(--r-tile); font-size: 15px; font-weight: 800; transition: transform .15s; }
   .demo-btn:active { transform: scale(.96); }
   .demo-btn.no { background: rgba(232,84,77,.10); color: var(--coral); }
-  .demo-btn.ok { background: rgba(20,146,121,.10); color: var(--brand); }
+  .demo-btn.ok { background: rgba(103,68,208,.10); color: var(--brand); }
   .demo-done { display: none; }
   .demo-done .ssagi-wrap { width: 124px; height: 124px; margin: 0 auto 6px; }
   .demo-done h3 { font-size: 21px; font-weight: 900; margin-top: 4px; letter-spacing: -.4px; }
@@ -194,18 +192,18 @@
   .safety-grid .anim { width: 210px; height: 210px; margin: 0 auto; }
   .srow { display: flex; gap: 16px; align-items: flex-start; padding: 14px 0; text-align: left; border-top: 1px solid var(--line); }
   .srow:first-child { border-top: none; }
-  .srow .ic { flex: none; width: 34px; height: 34px; border-radius: var(--r-chip); background: var(--mint-soft); color: var(--brand); display: flex; align-items: center; justify-content: center; }
+  .srow .ic { flex: none; width: 34px; height: 34px; border-radius: var(--r-chip); background: var(--lilac-soft); color: var(--brand); display: flex; align-items: center; justify-content: center; }
   .srow .ic svg { width: 18px; height: 18px; }
   .srow b { display: block; font-size: 15.5px; letter-spacing: -.2px; }
   .srow span { font-size: 14px; color: var(--ink2); }
 
   /* ---------- 시네마틱 밴드 (하나뿐인 어두운 쉼표) ---------- */
-  .band { position: relative; overflow: hidden; isolation: isolate; text-align: center; color: #EAFBF5; min-height: 440px; display: flex; align-items: center; background: var(--night); padding: 0; }
+  .band { position: relative; overflow: hidden; isolation: isolate; text-align: center; color: #F1EBFF; min-height: 440px; display: flex; align-items: center; background: var(--night); padding: 0; }
   .cine-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
   .cine-scrim { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(125% 105% at 50% 42%, rgba(14,35,31,.30) 0%, rgba(14,35,31,.62) 68%, rgba(14,35,31,.86) 100%); }
   .band-inner { position: relative; z-index: 3; }
   .band h2 { font-size: clamp(28px, 4.8vw, 46px); font-weight: 900; letter-spacing: -.9px; line-height: 1.16; text-shadow: 0 2px 26px rgba(2,20,17,.6); }
-  .band h2 .hl { color: var(--mint); }
+  .band h2 .hl { color: var(--lilac); }
   .band p { color: rgba(234,251,245,.8); margin-top: 14px; font-size: clamp(15px, 2vw, 18px); text-shadow: 0 2px 20px rgba(2,20,17,.55); }
   @media (max-width: 680px) { .band { min-height: 360px; } }
 
@@ -213,7 +211,7 @@
   .plans { display: grid; grid-template-columns: 1fr 1.08fr 1fr; gap: 16px; margin-top: 48px; align-items: stretch; max-width: 1000px; margin-left: auto; margin-right: auto; }
   @media (max-width: 860px) { .plans { grid-template-columns: 1fr; max-width: 480px; } }
   .plan { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-card); padding: 30px 26px; text-align: center; display: flex; flex-direction: column; }
-  .plan.hot { background: var(--mint-soft); border: 1.5px solid var(--brand); }
+  .plan.hot { background: var(--lilac-soft); border: 1.5px solid var(--brand); }
   .plan .name { font-weight: 800; font-size: 14px; color: var(--ink2); letter-spacing: .3px; }
   .plan .off { font-size: 12px; font-weight: 800; color: var(--brand); margin-bottom: 8px; }
   .plan .price { font-size: 34px; font-weight: 900; margin-top: 4px; letter-spacing: -1px; }
@@ -227,7 +225,7 @@
   .plan .alt-plan .price { font-size: 26px; margin-top: 2px; }
   .price-foot { text-align: center; margin-top: 24px; font-size: 14px; color: var(--ink2); font-weight: 600; }
 
-  /* ---------- CTA (종이 위의 싹이) ---------- */
+  /* ---------- CTA (종이 위의 도리) ---------- */
   .cta { text-align: center; background: var(--card); border-top: 1px solid var(--line); }
   .cta .ssagi-wrap { width: 150px; height: 150px; margin: 0 auto; }
   .cta h2 { font-size: clamp(28px, 4.2vw, 42px); font-weight: 900; margin-top: 6px; letter-spacing: -.8px; }
@@ -238,12 +236,12 @@
   /* ---------- FOOTER (잉크) ---------- */
   footer { background: var(--ink); color: rgba(234,251,245,.62); padding: 40px 0 52px; font-size: 13px; }
   .f-inner { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
-  .f-brand { display: flex; align-items: center; gap: 8px; font-weight: 900; color: #EAFBF5; font-size: 15px; }
+  .f-brand { display: flex; align-items: center; gap: 8px; font-weight: 900; color: #F1EBFF; font-size: 15px; }
   .f-brand img { width: 24px; height: 24px; border-radius: 7px; }
   footer a { color: rgba(234,251,245,.62); text-decoration: none; font-weight: 600; transition: color .2s; }
-  footer a:hover { color: var(--mint); }
-  .contact-btn { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,.08); color: #EAFBF5 !important; font-weight: 700; padding: 9px 16px; border-radius: var(--r-chip); font-size: 13px; border: 1px solid rgba(255,255,255,.12); }
-  .contact-btn:hover { background: rgba(41,217,161,.16); }
+  footer a:hover { color: var(--lilac); }
+  .contact-btn { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,.08); color: #F1EBFF !important; font-weight: 700; padding: 9px 16px; border-radius: var(--r-chip); font-size: 13px; border: 1px solid rgba(255,255,255,.12); }
+  .contact-btn:hover { background: rgba(169,144,228,.16); }
   .f-copy { margin-left: auto; }
   .f-biz { flex-basis: 100%; font-size: 12px; color: rgba(234,251,245,.45); }
   @media (max-width: 560px) { .f-copy { margin-left: 0; } }
@@ -289,7 +287,7 @@
 <header class="hero" id="download">
   <div class="wrap hero-inner">
     <div class="hero-copy">
-      <div class="ssagi-wrap" data-ssagi="idle"></div>
+      <div class="ssagi-wrap"><img class="dori idle" src="assets/img/dori-plain-idle.png" alt="" width="256" height="256"></div>
       <p class="eyebrow-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6l7-3z"/></svg>iOS 전용, 모든 처리는 기기 안에서</p>
       <h1>쓱 넘기고,<br><span class="hl">싹</span> 비워요</h1>
       <p class="sub">겹친 사진, 초고화질, 큰 파일. 사진첩을 무겁게 만드는 것들을 찾아 한&nbsp;번에 걷어내요. 열자마자 <strong>얼마나 가벼워질지</strong> 먼저 보여드릴게요.</p>
@@ -414,7 +412,7 @@
         <p class="demo-note">담긴 사진: <b id="demoTray">0장, 0 MB</b> (아직 아무것도 지워지지 않았어요)</p>
       </div>
       <div class="demo-done" id="demoDone">
-        <div class="ssagi-wrap" data-ssagi="happy"></div>
+        <div class="ssagi-wrap"><img class="dori happy" src="assets/img/dori-plain-happy.png" alt="" width="256" height="256"></div>
         <h3 id="demoResult">싹! 다 정리했어요</h3>
         <p>실제 앱에선 이제 쓰레받기에서 한&nbsp;번&nbsp;더 확인한 뒤 비워요.<br>지운 사진은 30일간 되돌릴 수 있고요.</p>
         <button class="demo-reset" onclick="demoReset()">다시 해보기</button>
@@ -549,7 +547,7 @@
 <!-- CTA -->
 <section class="cta">
   <div class="wrap reveal">
-    <div class="ssagi-wrap" data-ssagi="happy"></div>
+    <div class="ssagi-wrap"><img class="dori happy" src="assets/img/dori-sweep-happy.png" alt="" width="256" height="256"></div>
     <h2>오늘, 사진첩을 <span class="hl">가볍게</span></h2>
     <p>App Store 출시 준비 중이에요. 곧 만나요!</p>
     <div class="hero-ctas">
@@ -576,7 +574,7 @@
 <!-- 첫 방문 안내 오버레이 -->
 <div id="coach" class="coach" role="dialog" aria-label="시작 안내">
   <div class="coach-inner">
-    <div class="ssagi-wrap" data-ssagi="idle"></div>
+    <div class="ssagi-wrap"><img class="dori idle" src="assets/img/dori-plain-idle.png" alt="" width="256" height="256"></div>
     <h2>쓱싹에 <span class="hl">오신 걸</span> 환영해요</h2>
     <p>겹친 사진과 큰 파일을 찾아 한&nbsp;번에 싹 비우는<br>함부로 지우지 않는 사진 정리 앱이에요.</p>
     <div class="coach-arrow" data-lottie="assets/lottie/arrow_bounce.json"></div>
@@ -585,35 +583,6 @@
 </div>
 
 <script>
-  // ── 싹이 (앱 Ssagi.swift와 같은 지오메트리, 100×100 좌표계) ─────────────
-  (function () {
-    var n = 0;
-    function ssagiSVG(mood) {
-      var id = 'sg' + (++n);
-      var eyes = mood === 'happy'
-        ? '<path class="eye" d="M30.2 60.5Q35 52.5 39.8 60.5" fill="none" stroke="#10221F" stroke-width="3.2" stroke-linecap="round"/><path class="eye" d="M60.2 60.5Q65 52.5 69.8 60.5" fill="none" stroke="#10221F" stroke-width="3.2" stroke-linecap="round"/>'
-        : '<rect class="eye" x="31.7" y="52.2" width="6.6" height="12.5" rx="3.3" fill="#10221F"/><rect class="eye" x="61.7" y="52.2" width="6.6" height="12.5" rx="3.3" fill="#10221F"/>';
-      var mouth = mood === 'happy'
-        ? '<path d="M43 68.8Q50 79 57 68.8Z" fill="#10221F"/>'
-        : '<path d="M45 69Q50 73.5 55 69" fill="none" stroke="#10221F" stroke-width="3.2" stroke-linecap="round"/>';
-      var body = 'M14 91C3 66 19 25 50 25C81 25 97 66 86 91Q50 97.5 14 91Z';
-      var stem = 'M49.4 28.5Q49.2 22.5 50.9 18.5L53.1 18.5Q53.6 22.5 52.6 28.5Z';
-      var leafL = 'M52 20Q48.3 6.6 35 10.5Q38.7 23.9 52 20Z';
-      var leafR = 'M52 18.5Q66.4 21.5 69 7Q54.6 4 52 18.5Z';
-      return '<svg class="ssagi ' + mood + '" viewBox="0 0 100 100" aria-hidden="true">' +
-        '<defs><linearGradient id="' + id + 'b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7DF0C9"/><stop offset="1" stop-color="#29D9A1"/></linearGradient>' +
-        '<linearGradient id="' + id + 'l" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#24A38A"/><stop offset="1" stop-color="#0F7366"/></linearGradient></defs>' +
-        '<g fill="rgba(13,102,89,.22)" transform="translate(-2.5 5) rotate(-5 50 60)"><path d="' + body + '"/><path d="' + stem + '"/><path d="' + leafL + '"/><path d="' + leafR + '"/></g>' +
-        '<g class="body-g">' +
-        '<path d="' + stem + '" fill="url(#' + id + 'l)"/><path d="' + leafL + '" fill="url(#' + id + 'l)"/><path d="' + leafR + '" fill="url(#' + id + 'l)"/>' +
-        '<path d="' + body + '" fill="url(#' + id + 'b)"/>' +
-        '<rect x="21" y="37" width="18" height="6" rx="3" fill="rgba(255,255,255,.55)" transform="rotate(-24 30 40)"/><circle cx="42" cy="35" r="2" fill="rgba(255,255,255,.55)"/>' +
-        '<ellipse cx="23" cy="69.8" rx="5" ry="2.8" fill="rgba(255,133,122,.42)"/><ellipse cx="77" cy="69.8" rx="5" ry="2.8" fill="rgba(255,133,122,.42)"/>' +
-        eyes + mouth + '</g></svg>';
-    }
-    document.querySelectorAll('[data-ssagi]').forEach(function (el) { el.innerHTML = ssagiSVG(el.getAttribute('data-ssagi')); });
-  })();
-
   // ── Language toggle ─────────────────────────────────────────────
   // Korean is the source of truth in the markup. The English dictionary is keyed by each
   // element's exact innerHTML, so switching never needs per-element markup. Default: 한국어.
@@ -728,7 +697,7 @@
   var demoData = [
     { glyph: '📱', label: '스크린샷, 4.2 MB', en: 'Screenshot, 4.2 MB', bg: 'linear-gradient(150deg,#8AB6F9,#4D74D8)', trash: true },
     { glyph: '🍜', label: '연사 3장 중 1장, 2.8 MB', en: '1 of 3 burst shots, 2.8 MB', bg: 'linear-gradient(150deg,#F9C48A,#E8834D)', trash: true },
-    { glyph: '👨‍👩‍👧', label: '가족 사진, 3.1 MB', en: 'Family photo, 3.1 MB', bg: 'linear-gradient(150deg,#63D9B7,#0E8F7E)', trash: false }
+    { glyph: '👨‍👩‍👧', label: '가족 사진, 3.1 MB', en: 'Family photo, 3.1 MB', bg: 'linear-gradient(150deg,#B7A4EC,#6744D0)', trash: false }
   ];
   function T(ko, en) { return (window.ssLang && ssLang() === 'en') ? en : ko; }
   function trayText() { return T(trayCount + '장, ' + trayMB.toFixed(1) + ' MB', trayCount + ' photos, ' + trayMB.toFixed(1) + ' MB'); }
@@ -764,7 +733,7 @@
         document.querySelector('.demo-play').style.display = 'none';
         var done = document.getElementById('demoDone');
         done.style.display = 'block';
-        done.classList.add('in');   // 싹이 폴짝
+        done.classList.add('in');   // 도리 폴짝
         document.getElementById('demoResult').textContent =
           trayCount > 0 ? T('싹! ' + trayMB.toFixed(1) + ' MB 가벼워질 준비 완료', 'Swept! ' + trayMB.toFixed(1) + ' MB ready to go') : T('전부 남기기로 했어요', 'You kept everything');
       }, 480);
