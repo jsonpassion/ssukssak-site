@@ -27,7 +27,7 @@
 ├── index.html          # 랜딩 (CSS, JS 전부 인라인, 단일 파일)
 ├── privacy/index.html  # 개인정보 처리방침, Data Not Collected 근거
 ├── terms/index.html    # 이용약관, Apple 표준 EULA 기준
-├── icon.png            # 앱 아이콘 렌더 (파비콘, 로고, OG 이미지 공용). 앱 리포 tools/icon/generate.sh 산출물
+├── icon.png            # 앱 아이콘 렌더 (파비콘, 로고, OG 이미지 공용). 앱 리포 `Tools/icon/make.py` 산출물(도리가 빗자루로 사진을 쓸어 날리는 그림, 2026-09-23)
 └── assets/
     ├── img/            # 히어로 폰 목업용 홈 스크린샷 ko/en
     ├── lottie/         # 수제 로티 10종
